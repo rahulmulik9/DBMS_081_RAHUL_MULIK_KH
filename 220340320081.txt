@@ -1,0 +1,143 @@
+**************SECTION 1*************
+
+create database Rahul;
+use  Rahul;
+
+QUESTION 1) 
+
+create table DEPT(
+DEPTNO int(2),
+DNAME varchar(15),
+LOC varchar(10)
+);
+
+insert into DEPT(DEPTNO , DNAME , LOC)
+values (10 , 'ACCOUNTING' , 'NEW YORK'),
+    (20, 'RESEARCH' , 'DALLAS'),
+    (30 , 'SALES' , 'CHICAGO'),
+    (40, 'OPERATIONS' , 'BOSTON');
+    
+    select * from DEPT;
+    
+
+QUESTION  2 )
+
+    create table EMP(
+    EMPNO int(4),
+    ENAME  varchar(10),
+    JOB   varchar(9),
+    HIREDATE date,
+    SAL  float(7,2),
+    COMM   float(7,2),
+    DEPTNO   int(2)
+    );
+    
+    
+    
+    insert into EMP(EMPNO , ENAME , JOB , HIREDATE , SAL , COMM , DEPTNO)
+    values (7839 , 'KING' ,'MANAGER' , '1991-11-17' , 5000 , NULL , 10 ),
+		   (7698, 'BLAKE' ,'CLERK' , '1981-05-01' ,2850 , NULL  , 30),
+           (7782 , 'CLARK' ,'MANAGER' , '1981-06-09' ,2450 ,NULL ,10 ),
+           (7566 , 'JONES' ,'CLERK' , '1981-04-02' ,2975 ,NULL ,20 ),
+           (7654 , 'MARTIN' ,'SALESMAN' , '1981-09-28' ,1250 ,1400 ,30 ),
+           (7499 , 'ALLEN' ,'SALESMAN' , '1981-02-20' ,1600 ,300 ,30 );
+           
+
+
+QUESTION  3)
+           
+        select ENAME,SAL 
+        from EMP 
+        where SAL<5000 and SAL>2500;
+        
+
+QUESTION  4 )
+        
+        select ENAME 
+        from EMP
+        order by ENAME desc;
+        
+
+QUESTION  5 )
+        
+        select JOB, lower(JOB) as lowercase
+        from EMP ;
+        
+        
+
+QUESTION 6 )
+        
+select ENAME , length(ENAME)
+        from EMP;
+        
+
+QUESTION  7)
+
+        select DEPTNO , count(*)
+        from EMP
+        group by DEPTNO ;
+        
+
+QUESTION 8 )
+        
+	 select  JOB , ENAME
+        from EMP ;
+        
+
+QUESTION 9 )
+        
+	select ENAME , position('AR' in ENAME)
+        as POSITION
+        from EMP ; 
+
+QUESTION  10) 
+     
+      select ENAME, SAL ,
+      SAL*0.2 AS HRA
+      from EMP ;
+
+
+
+**********SECTION 2*****************
+
+Question 1)
+
+delimiter //
+create procedure PROCA(strA varchar, strB varchar)
+begin
+
+	position(strA in strB) as Place
+    insert into TEMPP values(strA , str B , Place)
+    
+    end; //
+    delimiter;
+    
+    create table TEMPP
+    (
+    strA varchar(20) ,
+    strB varchar(20) ,
+    Place int 
+    );
+    
+    call PROCA('DAC' , 'CDAC');
+    select * from TEMPP ;
+
+
+
+Question 2 )
+
+ delimiter //
+create function FUNC1 (a int , b int , c int )
+returns  boolean
+begin
+if (a + B <= c || a + c <= b || b + c <= a)
+THEN TRUE
+else FALSE
+end if;
+end;
+end //
+delimiter ;
+
+select FUNC1(3,4,5) from dual;
+
+      
